@@ -1,0 +1,34 @@
+{
+  "name": "octopi-status",
+  "version": "1.0.0",
+  "description": "Get status via OctoPi websocket and announce it via speetch",
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "ioredis": "^4.17.3",
+    "microsoft-cognitiveservices-speech-sdk": "^1.13.1",
+    "sha256": "^0.2.0",
+    "sound-play": "^1.0.5",
+    "websocket": "^1.0.32"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christian-kardach/octopi-status.git"
+  },
+  "keywords": [
+    "Octopi",
+    "TTS",
+    "Azure"
+  ],
+  "author": "Christian Kardach",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christian-kardach/octopi-status/issues"
+  },
+  "homepage": "https://github.com/christian-kardach/octopi-status#readme"
+}
