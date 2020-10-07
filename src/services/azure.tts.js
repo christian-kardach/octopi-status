@@ -18,6 +18,11 @@ function speak(text) {
 
     return new Promise(function (resolve, reject) {
         if (fs.existsSync(audioPath)) {
+
+            // Uncomment this line if you have azure.tts.js running
+            // on a server instead of locally on the pi
+            // redis_publish.publish(process.env.REDIS_CHANNEL, JSON.stringify({type: 'speak', url: process.env.API_SERVER'/'+playName}));
+            
             sound.play(audioPath).then(() => resolve('done'));
         }
         else {
@@ -27,6 +32,10 @@ function speak(text) {
             synthesizer.speakTextAsync(text, function (result) {
                 if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
 
+                    // Uncomment this line if you have azure.tts.js running
+                    // on a server instead of locally on the pi
+                    // redis_publish.publish(process.env.REDIS_CHANNEL, JSON.stringify({type: 'speak', url: process.env.API_SERVER'/'+playName}));
+            
                     sound.play(audioPath).then(() => resolve('done'));
 
                 } else {
