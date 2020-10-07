@@ -47,13 +47,13 @@ if (process.env.STREAM_AUDIO == 1) {
     }
 }
 
-function speakText() {
+function processSpeakQueue() {
     if (isSpeaking === false && !speakQueue.isEmpty()) {
         let text = speakQueue.dequeue();
         isSpeaking = true;
 
         if (process.env.STREAM_AUDIO == 1) {
-            axios.get('http://192.168.1.71:4000/api/v1/speak', {
+            axios.get(process.env.API_SERVER + '/api/v1/speak', {
                 params: {
                     'text': text
                 }
@@ -117,4 +117,4 @@ axios.post(process.env.OCTOPI_SERVER + '/api/login', {
         client.connect(process.env.OCTOPI_SERVER + '/sockjs/websocket');
     });
 
-setInterval(function () { speakText() }, 200);
+setInterval(function () { processSpeakQueue() }, 200);

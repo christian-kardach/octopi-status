@@ -23,7 +23,6 @@ function processStatus(data, callback) {
     if(activeFile) {
         if(activeFile != lastActiveFile)
         {
-            console.log("HERE!");
             lastActiveFile = activeFile;
             lastSpokenStatus = 0;
         }
@@ -51,6 +50,11 @@ function processStatus(data, callback) {
         case "Paused":
             break;
         case "Printing":
+            if(progress == 100) {
+                reply = "Your print is done!";
+                callback(reply);
+            }
+
             if (!firstStatusUpdated && temperature) {
                 reply = "Your print is " + progress + "% complete and the " + checkTemperature();
                 callback(reply);
